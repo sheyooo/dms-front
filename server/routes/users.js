@@ -1,9 +1,10 @@
 (() => {
   'use strict';
 
-  var UserController = require('./../controllers/users-controller.js');
+  var UserController = require('./../controllers/users-controller.js'),
+    jwtMiddleware = require('./../middleware/jwt.js').requireAuth;
 
-  module.exports = router => {    
+  module.exports = router => {
     router.post('/users/login', UserController.login);
 
     router.post('/users/logout', (req, res) => {
@@ -16,10 +17,8 @@
 
     router.get('/users/:id', UserController.getUser);
 
-    router.put('/users/:id', UserController.updateUser);
+    router.put('/users/:id', jwtMiddleware, UserController.updateUser);
 
-    router.delete('/users/:id', () => {
-
-    });
-  }; 
+    router.put('/me/password', jwtMiddleware, UserController.updatePassword);
+  };
 })();

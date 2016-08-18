@@ -27,9 +27,9 @@
   app.use(morgan('dev'));
 
   app.use(express.static('public'));
- 
+
   // Require and load up all routes in the Routes.js file
-  require('./server/routes/routes.js')(router);
+  require('./server/routes/routes.js')(router, app);
   // Make Router use JWT MiddleWare
   app.use(jwtMiddleware);
 

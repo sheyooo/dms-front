@@ -7,7 +7,13 @@
 
   module.exports = {
     createJWT: user => {
-      return jwt.sign({sub: user._id}, config.jwtKey);
+      return jwt.sign({
+        sub: user._id,
+        firstName: user.name.first,
+        lastName: user.name.last,
+        email: user.email,
+        username: user.username,
+      }, config.jwtKey);
     },
 
     paginate: (params, model) => {
@@ -41,18 +47,18 @@
     },
 
     docAccessCondition: (user, doc) => {
-      // It returns true if the user is of the doc's specified role or 
-      // if the user is th e owner of the document or 
+      // It returns true if the user is of the doc's specified role or
+      // if the user is th e owner of the document or
       // if the document's role is 'viewer' or
       // if the user is an 'admin'
       return (
-        (user && 
+        (user &&
           (
             (doc.role === user.role) ||
-            (doc.ownerId.toString() === user._id.toString()) ||
+            (doc.ownerId._id.toString() === user._id.toString()) ||
             (user.role === 'admin')
           )
-        ) || 
+        ) ||
         (doc.role === 'viewer')
       );
     },

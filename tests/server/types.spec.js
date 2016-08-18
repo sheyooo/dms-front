@@ -39,7 +39,7 @@
         .set('X-ACCESS-TOKEN', jwtToken)
         .send(newType)
         .end((err, res) => {
-          assert.equal(res.status, 200);
+          assert.equal(res.status, 201);
           done();
         });
     });
@@ -62,7 +62,7 @@
         .send({ title: '' })
         .end((err, res) => {
           assert.equal(
-            res.body.status, 
+            res.body.status,
             'ValidationError: Path `title` is required.'
           );
           done();

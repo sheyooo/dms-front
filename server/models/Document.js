@@ -1,7 +1,8 @@
 (() => {
   'use strict';
-  
+
   var mongoose = require('mongoose'),
+    User = require('./User.js').model,
     DocumentSchema = mongoose.Schema({
       ownerId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -20,8 +21,8 @@
     this.update({},{ $set: { updatedAt: new Date() } });
   });
 
-  module.exports = { 
+  module.exports = {
     model: mongoose.model('Document', DocumentSchema),
-    schema: DocumentSchema 
+    schema: DocumentSchema
   };
 })();

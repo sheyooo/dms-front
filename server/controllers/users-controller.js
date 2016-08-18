@@ -47,12 +47,28 @@
         password: req.body.password
       };
 
-      User.findOne({username: loginDetails.username}, (err, user) => {
+      var checkPassword = (user) => {
         if (user && bcrypt.compareSync(loginDetails.password, user.password)) {
-          res.json({token: util.createJWT(user)});          
+          res.json({token: util.createJWT(user)});
         } else {
           res.status(401)
             .json({status: 'Failed'});
+        }
+      };
+
+      User.findOne({username: loginDetails.username}, (err, user) => {
+        if (user) {
+          checkPassword(user);
+        } else {
+          User.findOne({email: loginDetails.username}, (err, user) => {
+            if (user) {
+              checkPassword(user);
+            } else {
+              res
+                .status(404)
+                .json({status: 'User not found'});
+            }
+          });
         }
       });
     },
@@ -89,7 +105,7 @@
       var id = req.params.id;
 
       User.findById(id, (err, user) => {
-        if (!user) {
+        if (!user && user._id === req.jwtUser._id) {
           res
             .status(404)
             .json({status: 'User not found'});
@@ -114,6 +130,8 @@
         if (user) {
           Document
             .find()
+            .populate('ownerId')
+            .sort({'updatedAt': 'desc'})
             .where('ownerId')
             .equals(id)
             .exec((err, docs) => {
@@ -129,6 +147,35 @@
             .json({status: 'User not found'});
         }
       });
+    },
+
+    updatePassword: (req, res) => {
+
+      if (req.jwtUser) {
+        if (
+          req.body.oldPassword.length > 6 &&
+          req.body.newPassword.length > 6
+        ) {
+          User.findById(req.jwtUser._id, (err, user) => {
+            if (
+              user && bcrypt.compareSync(req.body.oldPassword, user.password)
+            ) {
+              user.password = req.body.newPassword;
+              user.save();
+              res.json({status: 'Successfuly updated'});
+            } else {
+              res
+                .status(400)
+                .json({status: 'Incorrect password'});
+            }
+
+          });
+        } else {
+          res
+            .status(400)
+            .json({status: 'Bad passwords'});
+        }
+      }
     }
   };
 })();

@@ -1,0 +1,133 @@
+body {
+  /*background: url('/img/noise.png') repeat;*/
+  background: #FFF !important;
+  color: #1F4150;
+}
+
+div#root {
+  display: inline;
+}
+
+div#root, [data-reactroot] {
+  height: 100%;
+  min-height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .hide-small-screen {
+    display: none !important;
+    opacity: 0;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .hide-large-screen {
+    display: none !important;
+    opacity: 0;
+  }
+}
+
+.about-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+
+  div {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  img {
+    min-height: 100%;
+    min-width: 100%;
+  }
+}
+
+.ash-bg-container {
+  background-color: #F5F5F5;
+  overflow: scroll;
+  position: absolute;
+  width: 100%;
+  height: 100%
+}
+
+.card, .button {
+  border-radius: 1px !important;
+}
+
+.icon {
+  font-size: 20px !important;
+}
+
+.dms-menu {
+  font-family: 'Prompt' !important;
+  background-color: #FFF !important;
+  color: #D7D7DE !important;
+  box-shadow: 0px 4px 0px #ddd !important;
+  border-radius: 0px !important;
+  margin-bottom: 20px !important;
+
+  .item {
+    font-weight: 100 !important;
+    border-radius: 0px !important;
+  }
+
+  .active {
+    background-color: #79CB76 !important;
+    font-weight: bolder !important;
+    color: white !important;
+  }
+}
+
+.text-light {
+  font-weight: 100 !important;
+}
+
+.ui.menu{
+  .icon {
+    opacity: 0.8 !important;
+  }
+}
+
+.active-menu {
+  font-weight: 300 !important;
+}
+
+.ok-hand-emoji {
+  font-size: 60px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.card.dms-doc-card, .dms-doc-card {
+  background-color: #FFF;
+  box-shadow: 0px 4px 2px #ccc, 0px 0px 1px #ccc !important;
+  border: none !important;
+  width: 100%;
+
+  .content {
+    border-width: 2px !important;
+
+    .header {
+      color: #1F4150;
+    }
+  }
+
+  .doc-content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .button.teal {
+    background-color: #4DB6AC !important;
+  }
+}
