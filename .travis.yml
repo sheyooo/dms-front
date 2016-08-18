@@ -6,10 +6,9 @@ services:
 script:
   - npm run test:cover
   - npm run generate-coverage
-  - npm run send-coverage
 after_success:
   - npm install codeclimate-test-reporter -g
-  - npm run coverage
+  - npm run send-coverage
 addons:
     code_climate:
         repo_token: 138bcfea3b3bac3eb01488458c704cfc86f29749087222239593cdb022eacef8
