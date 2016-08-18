@@ -33109,7 +33109,7 @@
 	                { className: 'column' },
 	                _react2.default.createElement(
 	                  'div',
-	                  { onClick: this.onEdit, className: 'ui animated fade primary fluid button', tabindex: '0' },
+	                  { onClick: this.onEdit, id: 'edit-button', className: 'ui animated fade primary fluid button', tabindex: '0' },
 	                  _react2.default.createElement(
 	                    'div',
 	                    { className: 'visible content' },
@@ -33127,7 +33127,7 @@
 	                { className: 'column' },
 	                _react2.default.createElement(
 	                  'div',
-	                  { onClick: this.onDelete, className: 'ui animated fluid fade button', tabindex: '0' },
+	                  { onClick: this.onDelete, id: 'delete-button', className: 'ui animated fluid fade button', tabindex: '0' },
 	                  _react2.default.createElement(
 	                    'div',
 	                    { className: 'visible content' },
@@ -117828,7 +117828,7 @@
 	            { className: 'content' },
 	            _react2.default.createElement(
 	              'form',
-	              { className: 'ui form', onSubmit: this.submitPassword },
+	              { className: 'ui form', id: 'password-form', onSubmit: this.submitPassword },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'field' },
@@ -117884,7 +117884,7 @@
 	            { className: 'ui segment' },
 	            _react2.default.createElement(
 	              'form',
-	              { className: 'ui form', onSubmit: this.handleSubmit },
+	              { className: 'ui form', id: 'detail-form', onSubmit: this.handleSubmit },
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'field' },
@@ -117935,7 +117935,7 @@
 	                ),
 	                _react2.default.createElement(
 	                  'button',
-	                  { type: 'button', onClick: this.changePasswordModal, className: 'ui fluid button teal' },
+	                  { type: 'button', id: 'password-button', onClick: this.changePasswordModal, className: 'ui fluid button teal' },
 	                  _react2.default.createElement('i', { className: 'lock icon' }),
 	                  'Update password'
 	                )

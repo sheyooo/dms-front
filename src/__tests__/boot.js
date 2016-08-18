@@ -55,6 +55,12 @@ mockServer.get('/api/v1/users/:id', (req) => {
   }
 });
 
+mockServer.put('/api/v1/users/:id', (req) => {
+  return {
+    body: {status: 'Successfuly updated'}
+  }
+});
+
 mockServer.get('/api/v1/documents/:id', (req) => {
   return {
     body: fakeData.aDoc
@@ -64,6 +70,12 @@ mockServer.get('/api/v1/documents/:id', (req) => {
 mockServer.post('/api/v1/documents', (req) => {
   return {
     body: fakeData.aDoc
+  }
+});
+
+mockServer.del('/api/v1/documents/:id', (req) => {
+  return {
+    body: {status: 'Successfuly deleted'}
   }
 });
 

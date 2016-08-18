@@ -211,7 +211,7 @@ class ViewDocPage extends React.Component {
         <div className='ui segment'>
           <div className='ui equal width centered grid'>
             <div className='column'>
-              <div onClick={this.onEdit} className='ui animated fade primary fluid button' tabindex='0'>
+              <div onClick={this.onEdit} id='edit-button' className='ui animated fade primary fluid button' tabindex='0'>
                 <div className='visible content'>Edit</div>
                 <div className='hidden content'>
                   <i className='write icon'></i>
@@ -219,7 +219,7 @@ class ViewDocPage extends React.Component {
               </div>
             </div>
             <div className='column'>
-              <div onClick={this.onDelete} className='ui animated fluid fade button' tabindex='0'>
+              <div onClick={this.onDelete} id='delete-button' className='ui animated fluid fade button' tabindex='0'>
                 <div className='visible content'>Delete</div>
                 <div className='hidden content'>
                   <i className='trash icon'></i>
