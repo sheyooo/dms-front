@@ -14,7 +14,9 @@
             .status(409)
             .json({status: err.toString()});
         } else {
-          res.json(type);
+          res
+            .status(201)
+            .json(type);
         }
       });
     },

@@ -10,7 +10,7 @@
       var newDoc = req.body;
 
       newDoc.ownerId = req.decodedJWT.sub;
-      
+
       Role.findOne({title: newDoc.role}, (err, foundRole) => {
         if (!foundRole) {
           newDoc.role = 'viewer';
@@ -34,7 +34,9 @@
     getDoc: (req, res) => {
       var id = req.params.id;
 
-      Document.findById(id, (err, doc) => {
+      Document.findById(id)
+        .populate('ownerId')
+        .exec((err, doc) => {
         if (!doc) {
           res
             .status(404)
@@ -55,17 +57,20 @@
       var params = req.query,
         paginatedDocs = Utilities.paginate(params, Document.find());
 
-      paginatedDocs.exec((err, docs) => {
-        if (err) {
-          res
-            .status(400)
-            .json({status: 'Error', error: err});
-        } else {
-          res.json({
-            data: docs
-          });
-        }
-      });
+      paginatedDocs
+        .populate('ownerId')
+        .sort({'updatedAt': 'desc'})
+        .exec((err, docs) => {
+          if (err) {
+            res
+              .status(400)
+              .json({status: 'Error', error: err});
+          } else {
+            res.json({
+              data: docs
+            });
+          }
+        });
     },
 
     update: (req, res) => {
@@ -105,9 +110,9 @@
         userID = req.decodedJWT.sub;
 
       Document.findById(id, (err, doc) => {
-        if (err) {
+        if (!doc) {
           res
-            .status(400)
+            .status(404)
             .json({status: 'Something went wrong'});
         } else{
           if (doc.ownerId.toString() === userID) {

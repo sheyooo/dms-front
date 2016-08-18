@@ -11,7 +11,7 @@
     mongoose = require('mongoose'),
     jwtMiddleware = require('./server/middleware/jwt.js').optionalAuth;
 
-  mongoose.connect(process.env.DATABASE || 'mongodb://localhost/dms');
+  mongoose.connect(process.env.DATABASE);
 
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error:'));
@@ -27,9 +27,9 @@
   app.use(morgan('dev'));
 
   app.use(express.static('public'));
- 
+
   // Require and load up all routes in the Routes.js file
-  require('./server/routes/routes.js')(router);
+  require('./server/routes/routes.js')(router, app);
   // Make Router use JWT MiddleWare
   app.use(jwtMiddleware);
 

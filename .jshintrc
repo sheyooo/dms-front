@@ -96,6 +96,6 @@
         "it",
         "assert",
         "beforeEach",
-        "beforeAll"
+        "before"
     ]
 }
