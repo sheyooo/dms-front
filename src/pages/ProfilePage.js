@@ -146,7 +146,7 @@ class ProfilePage extends React.Component {
         <div className='ui modal password-modal'>
           <div className='header'>Change your password</div>
           <div className='content'>
-            <form className='ui form' onSubmit={this.submitPassword}>
+            <form className='ui form' id='password-form' onSubmit={this.submitPassword}>
               <div className='field'>
                 <label>Old Password</label>
                 <input type='password' onChange={this.oldPasswordChange} value={this.state.oldPassword} placeholder='Old Password' />
@@ -172,7 +172,7 @@ class ProfilePage extends React.Component {
 
           <div className='ui segment'>
 
-            <form className='ui form' onSubmit={this.handleSubmit}>
+            <form className='ui form' id='detail-form' onSubmit={this.handleSubmit}>
 
               <div className='field'>
                 <label>First Name</label>
@@ -195,7 +195,7 @@ class ProfilePage extends React.Component {
                 <button type='submit' className='ui fluid button green submit'>
                   Save profile
                 </button>
-                <button type='button' onClick={this.changePasswordModal} className='ui fluid button teal'>
+                <button type='button' id='password-button' onClick={this.changePasswordModal} className='ui fluid button teal'>
                   <i className='lock icon'></i>
                   Update password
                 </button>

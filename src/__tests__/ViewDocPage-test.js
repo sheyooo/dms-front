@@ -24,10 +24,29 @@ describe('VIEW DOCUMENT COMPONENT:', function() {
     expect(component.state('document')).to.equal(fakeData.aDoc);
   });
 
+  it('should bring up modal when edit button is clicked', function() {
+    component.find('#edit-button').simulate('click');
+
+    expect($('').modal.called).to.be.ok;
+  });
+
+  it('should redirect after deleting document', function() {
+    AuthHelper.__Rewire__('storage', () => fakeData.token);
+
+    sinon.stub(browserHistory, 'push');
+    ViewDocPage.__Rewire__('browserHistory', browserHistory);
+
+    var component = mount(<ViewDocPage params={{docID: fakeData.aDoc._id}} />);
+
+    component.find('#delete-button').simulate('click');
+
+
+  });
+
   it('should redirect an un-authenticated user', function() {
     AuthHelper.__Rewire__('storage', () => null);
-    sinon.stub(browserHistory, 'push');
-    AuthHelper.__Rewire__('browserHistory', browserHistory);
+    //sinon.stub(browserHistory, 'push');
+    ViewDocPage.__Rewire__('browserHistory', browserHistory);
     mount(<ViewDocPage />);
     expect(browserHistory.push.calledWith('/login')).to.be.ok;
   });

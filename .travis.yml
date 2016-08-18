@@ -3,13 +3,12 @@ node_js:
   - "6"
 services:
   - mongodb
-before_script:
-  - npm run db:seed
 script:
-  - npm test
+  - npm run test:cover
+  - npm run generate-coverage
 after_success:
   - npm install codeclimate-test-reporter -g
-  - npm run coverage
+  - npm run send-coverage
 addons:
     code_climate:
-        repo_token: 2e85963974b8bdd53b817c8d6eb45c86b904ab9bb4ec18c17ff977de3fbf1f77
+        repo_token: 138bcfea3b3bac3eb01488458c704cfc86f29749087222239593cdb022eacef8
