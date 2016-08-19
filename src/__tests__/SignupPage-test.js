@@ -23,10 +23,17 @@ describe("SIGNUP COMPONENT:", function() {
     });
 
     it('should not submit an incomplete form', () => {
-      component.find('input[name="firstname"]').simulate('change', {target: {value: faker.name.firstName()}});
-      component.find('input[name="lastname"]').simulate('change', {target: {value: faker.name.lastName()}});
+      component.find('input[name="firstname"]').simulate('change', {target: {
+        value: faker.name.firstName()}
+      });
+      component.find('input[name="lastname"]').simulate('change', {target: {
+        value: faker.name.lastName()}
+      });
 
-      component.find('form').simulate('submit', {target: {}, preventDefault: () => {}});
+      component.find('form').simulate('submit', {
+        target: {},
+        preventDefault: sinon.stub()
+      });
 
       expect(component.state('errors').length).to.be.above(0);
     });
@@ -34,15 +41,32 @@ describe("SIGNUP COMPONENT:", function() {
     it('form should be error free if complete', () => {
       let pass = faker.internet.password();
 
-      component.find('input[name="firstname"]').simulate('change', {target: {value: faker.name.firstName()}});
-      component.find('input[name="lastname"]').simulate('change', {target: {value: faker.name.lastName()}});
-      component.find('input[name="email"]').simulate('change', {target: {value: faker.internet.email()}});
-      component.find('input[name="username"]').simulate('change', {target: {value: faker.internet.userName()}});
-      component.find('select[name="role"]').simulate('change', {target: {value: 'viewer'}});
-      component.find('input[name="password"]').simulate('change', {target: {value: pass}});
-      component.find('input[name="repeatpassword"]').simulate('change', {target: {value: pass}});
+      component.find('input[name="firstname"]').simulate('change', {target: {
+        value: faker.name.firstName()
+      }});
+      component.find('input[name="lastname"]').simulate('change', {target: {
+        value: faker.name.lastName()
+      }});
+      component.find('input[name="email"]').simulate('change', {target: {
+        value: faker.internet.email()
+      }});
+      component.find('input[name="username"]').simulate('change', {target: {
+        value: faker.internet.userName()
+      }});
+      component.find('select[name="role"]').simulate('change', {target: {
+        value: 'viewer'
+      }});
+      component.find('input[name="password"]').simulate('change', {target: {
+        value: pass
+      }});
+      component.find('input[name="repeatpassword"]').simulate('change', {
+        target: { value: pass }
+      });
 
-      component.find('form').simulate('submit', {target: {}, preventDefault: () => {}});
+      component.find('form').simulate('submit', {
+        target: {},
+        preventDefault: sinon.stub()
+      });
 
       expect(component.state('errors').length).equal(0);
     });

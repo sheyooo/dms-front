@@ -12,6 +12,7 @@ class ViewDocPage extends React.Component {
   constructor() {
     super();
 
+    this.deleteDialog = this.deleteDialog.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onEdit = this.onEdit.bind(this);
     this.inpTitleChange = this.inpTitleChange.bind(this);
@@ -61,9 +62,6 @@ class ViewDocPage extends React.Component {
 
         this.refs.loader.stop();
       });
-
-      $('.ui.modal')
-        .modal();
   }
 
   onEdit() {
@@ -75,7 +73,12 @@ class ViewDocPage extends React.Component {
     this.refs.title.value = this.state.editDoc.title;
     this.refs.content.value = this.state.editDoc.content;
 
-    $('.ui.modal:last-of-type')
+    $('.ui.modal#edit'+ this.state.document._id +':last-of-type')
+      .modal('show');
+  }
+
+  deleteDialog() {
+    $('.ui.modal#delete'+ this.state.document._id +':last-of-type')
       .modal('show');
   }
 
@@ -176,7 +179,6 @@ class ViewDocPage extends React.Component {
 
           <div className='ui segment'>
 
-
             <div className='ui grid container'>
               <div dangerouslySetInnerHTML={{ __html: this.state.document.content }} className='row'>
               </div>
@@ -219,7 +221,7 @@ class ViewDocPage extends React.Component {
               </div>
             </div>
             <div className='column'>
-              <div onClick={this.onDelete} id='delete-button' className='ui animated fluid fade button' tabindex='0'>
+              <div onClick={this.deleteDialog} id='delete-button' className='ui animated fluid fade button' tabindex='0'>
                 <div className='visible content'>Delete</div>
                 <div className='hidden content'>
                   <i className='trash icon'></i>
@@ -232,7 +234,7 @@ class ViewDocPage extends React.Component {
 
         </div>
 
-        <div className='ui modal' id={'modal' + this.state.document._id}>
+        <div className='ui modal' id={'edit' + this.state.document._id}>
           <div className='header'>Edit Document</div>
           <div className='content'>
             <form className='ui form' onSubmit={this.handleSubmit}>
@@ -282,6 +284,25 @@ class ViewDocPage extends React.Component {
         </div>
 
 
+        <div className='ui small basic modal'  id={'delete' + this.state.document._id}>
+          <div className='ui icon header'>
+            <i className='archive icon'></i>
+            Are you sure want to delete? This is not a drill.
+          </div>
+          <div className='content'>
+            <p>You are about to delete "{this.state.document.title}" document.</p>
+          </div>
+          <div className='actions'>
+            <div className='ui red basic cancel inverted button'>
+              <i className='remove icon'></i>
+              No
+            </div>
+            <div className='ui green ok inverted button' onClick={this.onDelete}>
+              <i className='checkmark icon'></i>
+              Yes
+            </div>
+          </div>
+        </div>
 
       </div>
     );

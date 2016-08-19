@@ -46,7 +46,14 @@ class NewRolePage extends React.Component {
       })
       .end((err, res) => {
         if (res) {
+
+          let roles = this.state.roles;
+          roles.push({title: this.state.title});
+
+          this.setState({roles});
           toastr.success('Role added');
+
+          this.setState({title: ''});
         } else {
           toastr.danger('Role couldnt be added');
         }
@@ -63,7 +70,7 @@ class NewRolePage extends React.Component {
 
             {this.state.roles.map((role) => {
               return (
-                <div key={role._id} className='item'>
+                <div key={role.title} className='item'>
                   <img className='ui avatar image' src='img/ovo.png' />
                   <div className='content'>
                     <a className='header'>{role.title}</a>
@@ -86,7 +93,7 @@ class NewRolePage extends React.Component {
 
               <div className='field'>
                 <label>Role title</label>
-                <input onChange={this.inpTitleChange} type='text' placeholder='Super duper admin' />
+                <input value={this.state.title || ''} onChange={this.inpTitleChange} type='text' placeholder='Super duper admin' />
               </div>
 
               <button type='submit' className='ui fluid button green submit'>

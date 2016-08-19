@@ -46,7 +46,15 @@ class NewTypePage extends React.Component {
       })
       .end((err, res) => {
         if (res) {
+
+          let types = this.state.docTypes;
+          types.push({title: this.state.title});
+
+          this.setState({types});
+          this.setState({title: ''});
+
           toastr.success('Doc Type added');
+
         } else {
           toastr.error('Doc Type could not be added');
         }
@@ -63,7 +71,7 @@ class NewTypePage extends React.Component {
 
             {this.state.docTypes.map((type) => {
               return (
-                <div key={type._id} className='item'>
+                <div key={type.title} className='item'>
                   <img className='ui avatar image' src='img/ovo.png' />
                   <div className='content'>
                     <a className='header'>{type.title}</a>
@@ -86,7 +94,7 @@ class NewTypePage extends React.Component {
 
               <div className='field'>
                 <label>Type title</label>
-                <input onChange={this.inpTitleChange} type='text' placeholder='Super duper admin' />
+                <input value={this.state.title || ''} onChange={this.inpTitleChange} type='text' placeholder='Super duper admin' />
               </div>
 
               <button type='submit' className='ui fluid button green submit'>

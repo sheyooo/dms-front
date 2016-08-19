@@ -80,6 +80,3 @@ mockServer.del('/api/v1/documents/:id', (req) => {
 });
 
 Api.__Rewire__('superagent', superagent);
-
-//sinon.stub(browserHistory, 'push');
-//AuthHelper.__Rewire__('browserHistory', browserHistory);

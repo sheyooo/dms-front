@@ -29,7 +29,7 @@ class LandingMenuComponent extends React.Component {
           <Link to='about' activeClassName='active' className='item'>
             About
           </Link>
-          <a href='https://github.com/sheyooo' activeClassName='active' className='item'>
+          <a href='https://github.com/sheyooo' activeClassName='active' className='item' target='_blank'>
             Contact Us
           </a>
           <div className='right menu hide-small-screen'>

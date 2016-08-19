@@ -45,7 +45,6 @@ describe('VIEW DOCUMENT COMPONENT:', function() {
 
   it('should redirect an un-authenticated user', function() {
     AuthHelper.__Rewire__('storage', () => null);
-    //sinon.stub(browserHistory, 'push');
     ViewDocPage.__Rewire__('browserHistory', browserHistory);
     mount(<ViewDocPage />);
     expect(browserHistory.push.calledWith('/login')).to.be.ok;

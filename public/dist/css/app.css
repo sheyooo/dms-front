@@ -96,7 +96,3 @@ div#root, [data-reactroot] {
     text-overflow: ellipsis; }
   .card.dms-doc-card .button.teal, .dms-doc-card .button.teal {
     background-color: #4DB6AC !important; }
-
-.remove-button {
-  padding: 3px !important;
-  border-radius: 50px !important; }

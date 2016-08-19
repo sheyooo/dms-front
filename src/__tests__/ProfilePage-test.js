@@ -38,7 +38,9 @@ describe('VIEW PROFILE COMPONENT:', function() {
       username: ''
     });
 
-    component.find('form#detail-form').simulate('submit', {target: {preventDefault: sinon.stub()}});
+    component.find('form#detail-form').simulate('submit', {target: {
+      preventDefault: sinon.stub()}
+    });
 
     setTimeout(() => {
       expect(toastr.error.calledWith('All fields must be filled')).to.be.ok;
@@ -55,7 +57,9 @@ describe('VIEW PROFILE COMPONENT:', function() {
       username: 'wizzy'
     });
 
-    component.find('form#detail-form').simulate('submit', {target: {preventDefault: sinon.stub()}});
+    component.find('form#detail-form').simulate('submit', {target: {
+      preventDefault: sinon.stub()}
+    });
 
     setTimeout(() => {
       expect(toastr.success.calledWith('Successfuly updated profile')).to.be.ok;

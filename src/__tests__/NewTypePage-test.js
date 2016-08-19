@@ -28,7 +28,9 @@ describe('DOC TYPE PAGE COMPONENT:', function() {
   });
 
   it('should not allow empty field', function() {
-    component.find('form').simulate('submit', {target: {preventDefault: sinon.stub()}});
+    component.find('form').simulate('submit', {target: {
+      preventDefault: sinon.stub()}
+    });
 
     expect(toastr.error.calledWith('Doc Type title cannot be empty')).to.be.ok;
   });
@@ -36,7 +38,9 @@ describe('DOC TYPE PAGE COMPONENT:', function() {
   it('should submit filled field', function(done) {
     component.find('input').simulate('change', {target: {value: 'hello'}});
 
-    component.find('form').simulate('submit', {target: {preventDefault: sinon.stub()}});
+    component.find('form').simulate('submit', {target: {
+      preventDefault: sinon.stub()}
+    });
 
     setTimeout(() => {
       expect(toastr.success.calledWith('Role added')).to.be.ok;

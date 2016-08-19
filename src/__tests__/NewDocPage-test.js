@@ -23,22 +23,33 @@ describe('CREATE NEW DOCUMENT COMPONENT:', function() {
   });
 
   it('should not create a new document if empty', function() {
-    component.find('form').simulate('submit', {target: {}, preventDefault: () => {}});
-    expect(toastr.error.calledWith('You must fill in necessary fields')).to.be.ok;
+    component.find('form').simulate('submit', {
+      target: {},
+      preventDefault: sinon.stub()
+    });
+
+    expect(toastr.error.calledWith('You must fill in necessary fields'))
+      .to.be.ok;
   });
 
   it('should create new document', function(done) {
     NewDocPage.__Rewire__('browserHistory', browserHistory);
 
-    component.find('input[name="title"]').simulate('change', {target: {value: 'A doc title'}});
+    component.find('input[name="title"]').simulate('change', {target: {
+      value: 'A doc title'}
+    });
     component.setState({content: 'Heya'});
 
     // Wait for changes to propagate
     setTimeout(() => {
-      component.find('form').simulate('submit', {target: {}, preventDefault: () => {}});
+      component.find('form').simulate('submit', {
+        target: {},
+        preventDefault: sinon.stub()
+      });
       // Wait for changes to propagate
       setTimeout(() => {
-        expect(toastr.success.calledWith('Successfuly created your document')).to.be.ok;
+        expect(toastr.success.calledWith('Successfuly created your document'))
+          .to.be.ok;
         expect(browserHistory.push.called).to.be.ok;
         done();
       }, 500);

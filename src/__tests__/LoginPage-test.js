@@ -22,9 +22,14 @@ describe("LOGIN COMPONENT:", function() {
     });
 
     it('should not submit an incomplete form', () => {
-      component.find('input[name="username"]').simulate('change', {target: {value: faker.name.firstName()}});
+      component.find('input[name="username"]').simulate('change', {target: {
+        value: faker.name.firstName()}
+      });
 
-      component.find('form').simulate('submit', {target: {}, preventDefault: () => {}});
+      component.find('form').simulate('submit', {
+        target: {},
+        preventDefault: sinon.stub()
+      });
 
       expect(component.state('errors').length).to.be.above(0);
     });
@@ -32,10 +37,17 @@ describe("LOGIN COMPONENT:", function() {
     it('form should be error free if complete', () => {
       let pass = faker.internet.password();
 
-      component.find('input[name="username"]').simulate('change', {target: {value: faker.name.firstName()}});
-      component.find('input[name="password"]').simulate('change', {target: {value: faker.internet.password()}});
+      component.find('input[name="username"]').simulate('change', {target: {
+        value: faker.name.firstName()}
+      });
+      component.find('input[name="password"]').simulate('change', {target: {
+        value: faker.internet.password()}
+      });
 
-      component.find('form').simulate('submit', {target: {}, preventDefault: () => {}});
+      component.find('form').simulate('submit', {
+        target: {},
+        preventDefault: sinon.stub()
+      });
 
       expect(component.state('errors').length).equal(0);
     });

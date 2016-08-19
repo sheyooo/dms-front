@@ -1,7 +1,6 @@
 import React from 'react';
 import MainLayout from './../containers/MainLayout';
 import {Link, browserHistory} from 'react-router';
-import TinyMCE from 'react-tinymce';
 import AppCommons from './../helpers/AppCommons';
 import Api from './../helpers/ApiClient';
 import AuthHelper from './../helpers/AuthHelper';
@@ -11,7 +10,7 @@ class NewDocPage extends React.Component {
     super();
 
     this.inpTitleChange = this.inpTitleChange.bind(this);
-    this.handleEditorChange = this.handleEditorChange.bind(this);
+    this.inpContentChange = this.inpContentChange.bind(this);
     this.selectRoleChange = this.selectRoleChange.bind(this);
     this.selectTypeChange = this.selectTypeChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,8 +41,8 @@ class NewDocPage extends React.Component {
     this.setState({title: e.target.value});
   }
 
-  handleEditorChange(e) {
-    this.setState({content: e.target.getContent()});
+  inpContentChange(e) {
+    this.setState({content: e.target.value});
   }
 
   selectRoleChange(e) {
@@ -97,14 +96,7 @@ class NewDocPage extends React.Component {
 
               <div className='field'>
                 <label>Content</label>
-                <TinyMCE
-                  content=""
-                  config={{
-                    plugins: 'link image code',
-                    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
-                  }}
-                  name='title'
-                  onChange={this.handleEditorChange} />
+                <textarea name='content' onChange={this.inpContentChange}></textarea>
               </div>
 
               <div className='field'>
