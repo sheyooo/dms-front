@@ -110,7 +110,7 @@
             .status(404)
             .json({status: 'User not found'});
         } else {
-          user.update(req.body, {safe: true}, (err) => {
+          user.update(req.body, (err) => {
             if (err) {
               res
                 .status(400)

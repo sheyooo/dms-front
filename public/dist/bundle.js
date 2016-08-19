@@ -117796,7 +117796,7 @@
 	            if (res && res.status === 200) {
 	              toastr.success('Password changed successfuly');
 	            } else {
-	              toastr.success('Your old password does not match');
+	              toastr.error('Your old password does not match');
 	            }
 	          });
 	        } else {
