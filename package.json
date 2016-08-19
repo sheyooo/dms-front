@@ -31,7 +31,7 @@
     "mocha": "^2.5.3",
     "moment": "^2.14.1",
     "mongodb": "^2.1.18",
-    "mongoose": "^4.4.14",
+    "mongoose": "4.5.7",
     "morgan": "^1.7.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
