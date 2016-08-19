@@ -1,4 +1,6 @@
-###### Code Quality: [![Code Climate](https://codeclimate.com/github/sheyooo/dms-api/badges/gpa.svg)](https://codeclimate.com/github/sheyooo/dms-api)  Test Coverage: [![Test Coverage](https://codeclimate.com/github/sheyooo/dms-api/badges/coverage.svg)](https://codeclimate.com/github/sheyooo/dms-api/coverage)  Build Status: [![Build Status](https://travis-ci.org/sheyooo/dms-api.svg?branch=master)](https://travis-ci.org/sheyooo/dms-api)
+### TIA
+
+###### Code Quality: [![Code Climate](https://codeclimate.com/github/sheyooo/dms-front/badges/gpa.svg)](https://codeclimate.com/github/sheyooo/dms-front)  Test Coverage: [![Test Coverage](https://codeclimate.com/github/sheyooo/dms-front/badges/coverage.svg)](https://codeclimate.com/github/sheyooo/dms-front/coverage)  Build Status: [![Build Status](https://travis-ci.org/sheyooo/dms-front.svg?branch=master)](https://travis-ci.org/sheyooo/dms-front)
 
 DOCUMENT MANAGEMENT SYSTEM
 ==========================
@@ -111,7 +113,7 @@ API endpoints currently supported.
 
 _*Users*_
 
-Request type | Endpoint | Action 
+Request type | Endpoint | Action
 ------------ | -------- | ------
 POST | /api/v1/users | Create a new user
 GET | /api/v1/users | Get all users
@@ -121,10 +123,10 @@ DELETE | /api/v1/users/:id | Remove a user from storage
 
 _*Documents*_
 
-Request type | Endpoint | Action 
------------- | -------- | ------ 
+Request type | Endpoint | Action
+------------ | -------- | ------
 POST | /api/v1/documents | Create a new document
-GET | /api/v1/documents | Retrieve all documents 
+GET | /api/v1/documents | Retrieve all documents
 GET | /api/v1/documents/:id | Retrieve a specific document
 GET | /api/v1/users/:id/documents | Retrieve all documents created by a user
 GET | /api/v1/documents/documents?role=:role | Retrieve all documents with a specific role
@@ -134,17 +136,17 @@ DELETE | /api/v1/documents/:id | Remove a specific document from storage
 
 _*Roles*_
 
-Request type | Endpoint | Action 
------------- | -------- | ------ 
-POST | /api/v1/roles | Create a new role 
-GET | /api/v1/roles | Retrieve all roles 
+Request type | Endpoint | Action
+------------ | -------- | ------
+POST | /api/v1/roles | Create a new role
+GET | /api/v1/roles | Retrieve all roles
 
 _*Types*_
 
-Request type | Endpoint | Action 
------------- | -------- | ------ 
-POST | /api/v1/doc-types | Create a new document type 
-GET | /api/v1/doc-types | Retrieve all document types 
+Request type | Endpoint | Action
+------------ | -------- | ------
+POST | /api/v1/doc-types | Create a new document type
+GET | /api/v1/doc-types | Retrieve all document types
 
 Testing.
 --------
