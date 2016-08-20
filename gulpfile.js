@@ -22,8 +22,19 @@ gulp.task('images', function() {
 });
 
 gulp.task('semantic', function() {
-  return gulp.src('src/semantic/*')
+  return gulp.src('src/semantic/*.*')
     .pipe(gulp.dest('public/semantic'));
 });
 
-gulp.task('build', ['html', 'images', 'semantic', 'build-css']);
+gulp.task('semantic-icons', function() {
+  return gulp.src('src/semantic/icons/*')
+    .pipe(gulp.dest('public/semantic/themes/default/assets/fonts'));
+});
+
+gulp.task('build', [
+  'html',
+  'images',
+  'semantic',
+  'semantic-icons',
+  'build-css'
+]);
