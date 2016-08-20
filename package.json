@@ -11,7 +11,8 @@
     "test:cover": "nyc _mocha --require src/__tests__/.setup.js src/__tests__/boot.js src/__tests__/**/*-test.js",
     "send-coverage": "codeclimate-test-reporter < coverage/lcov.info",
     "generate-coverage": "nyc report --reporter=lcov",
-    "db:seed": "node ./server/seeders/app-seed.js"
+    "db:seed": "node ./server/seeders/app-seed.js",
+    "postinstall": "gulp build && webpack"
   },
   "author": "",
   "license": "ISC",

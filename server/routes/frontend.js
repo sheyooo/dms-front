@@ -4,7 +4,7 @@
 
   module.exports = router => {
     router.get(/^((?!\/api\/v1).)*$/, (req, res) => {
-      res.sendFile(path.resolve(__dirname + "/../../src/index.html"));
+      res.sendFile(path.resolve(__dirname + "/../../public/index.html"));
     });
   };
 })();
