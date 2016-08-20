@@ -10,10 +10,14 @@ import fakeData from './../tests-helpers/fakeData';
 describe('VIEW DOCUMENT COMPONENT:', function() {
   var component;
 
-  before(() => {
+  before((done) => {
     AuthHelper.__Rewire__('storage', () => fakeData.token);
 
     component = mount(<ViewDocPage params={{docID: fakeData.aDoc._id}} />);
+    
+    setTimeout(() => {
+      done();
+    }, 500);
   });
 
   after(() => {

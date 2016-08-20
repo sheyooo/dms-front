@@ -6,10 +6,10 @@ import AuthHelper from './../helpers/AuthHelper';
 import LoginPage from './../pages/LoginPage';
 import faker from 'faker';
 
-describe("LOGIN COMPONENT:", function() {
+describe('LOGIN COMPONENT:', function() {
   let shallowComp = shallow(<LoginPage />);
 
-  it("has a signup form", function() {
+  it('has a signup form', function() {
     expect(shallowComp.find('#login-form').length).to.equal(1);
   });
 
@@ -22,7 +22,7 @@ describe("LOGIN COMPONENT:", function() {
     });
 
     it('should not submit an incomplete form', () => {
-      component.find('input[name="username"]').simulate('change', {target: {
+      component.find('input[name=\'username\']').simulate('change', {target: {
         value: faker.name.firstName()}
       });
 
@@ -37,10 +37,10 @@ describe("LOGIN COMPONENT:", function() {
     it('form should be error free if complete', () => {
       let pass = faker.internet.password();
 
-      component.find('input[name="username"]').simulate('change', {target: {
+      component.find('input[name=\'username\']').simulate('change', {target: {
         value: faker.name.firstName()}
       });
-      component.find('input[name="password"]').simulate('change', {target: {
+      component.find('input[name=\'password\']').simulate('change', {target: {
         value: faker.internet.password()}
       });
 

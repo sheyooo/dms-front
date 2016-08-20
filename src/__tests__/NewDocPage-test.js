@@ -35,7 +35,7 @@ describe('CREATE NEW DOCUMENT COMPONENT:', function() {
   it('should create new document', function(done) {
     NewDocPage.__Rewire__('browserHistory', browserHistory);
 
-    component.find('input[name="title"]').simulate('change', {target: {
+    component.find('input[name=\'title\']').simulate('change', {target: {
       value: 'A doc title'}
     });
     component.setState({content: 'Heya'});
