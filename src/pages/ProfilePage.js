@@ -112,8 +112,8 @@ class ProfilePage extends React.Component {
     e.preventDefault();
 
     if (
-      this.state.oldPassword.length > 6 &&
-      this.state.newPassword.length > 6
+      this.state.oldPassword.length > 5 &&
+      this.state.newPassword.length > 5
     ) {
       if (this.state.newPassword === this.state.rNewPassword) {
         Api('put', '/me/password')
@@ -125,12 +125,14 @@ class ProfilePage extends React.Component {
             if (res && res.status === 200) {
               toastr.success('Password changed successfuly');
             } else {
-              toastr.error('Your old password does not match');
+              toastr.error('Your old password is incorrect');
             }
           });
       } else {
-        toastr.warning('Your new password should be at least 6 characters');
+        toastr.warning('Your new passwords do not match');
       }
+    } else {
+      toastr.warning('Your password must be greater than 6 characters')
     }
   }
 
